@@ -1,0 +1,9 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fix leaflet map container */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
