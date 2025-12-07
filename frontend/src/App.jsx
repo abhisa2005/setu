@@ -4,26 +4,29 @@ import Home from "./pages/Home";
 import Report from "./pages/Report";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import './App.css';
 
-export default function App(){
+export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50">
-        <header className="bg-white shadow p-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Disease Tracker</h1>
-          <nav className="space-x-4">
-            <Link to="/" className="text-sm">Home</Link>
-            <Link to="/report" className="text-sm">Report</Link>
-            <Link to="/login" className="text-sm">Login</Link>
-            <Link to="/admin" className="text-sm">Admin</Link>
+      <div className="app-container">
+        <header className="app-header">
+          <h1 className="app-title">Disease Tracker</h1>
+
+          <nav className="app-nav">
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/report" className="nav-link">Report</Link>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/admin" className="nav-link">Admin</Link>
           </nav>
         </header>
-        <main className="p-4">
+
+        <main className="app-main">
           <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/report" element={<Report/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/admin" element={<Admin/>} />
+            <Route path="/" element={<Home />} />
+            <Route path="/report" element={<Report />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
       </div>
