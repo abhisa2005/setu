@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+
+.auth-container {
+    margin: 0 auto;
+    height: 80vh;
+    width: 70%;
+    display: flex;
+    background: #f5f7ff;
+}
+
+.auth-left {
+  width: 45%;
+  background: #c9d2f8;
+  display: flex;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.left-content {
+  text-align: left;
+  max-width: 70%;
+  margin-top: 2rem;
+  margin-left: 1.8rem;
+}
+
+.logo {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.left-text {
+  color: #ffffff;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.left-image {
+  width: 205%;
+    margin-top: -4rem;
+    position: relative;
+}
+
+.auth-right {
+  width: 55%;
+  background: #ffffff;
+  padding: 4rem 3rem 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 2rem 2rem 0;
+}
+
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+
+.social-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.social {
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+
+.divider {
+  text-align: center;
+  color: #aaa;
+  margin: 1.5rem 0;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 0.6rem 0.2rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+
+.primary-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  background: #6c77d4;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.login-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.login-text span {
+  color: #6c77d4;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    width: 100%;
+    height: 35vh;
+   }
+   .left-image{
+    display: none;
+   }
+
+  .auth-right {
+    width: 100%;
+    border-radius: 2rem 2rem 0 0;
+  }
+}
