@@ -4,12 +4,13 @@ import Home from "./pages/Home";
 import Report from "./pages/Report";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
-import './App.css';
+import "./App.css";
 
 export default function App() {
   return (
     <BrowserRouter>
       <div className="app-container">
+
         <header className="app-header">
           <h1 className="app-title">Disease Tracker</h1>
 
@@ -21,6 +22,7 @@ export default function App() {
           </nav>
         </header>
 
+
         <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -29,6 +31,18 @@ export default function App() {
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
+
+        <footer className="app-footer">
+          <div className="footer-inner">
+            <p>© 2026 Disease Tracking System</p>
+            <p>
+              Created by <strong>Abhishek Sarkar</strong> ·
+              <a href="mailto:contact@healthtrack.com">
+                contact@healthtrack.com
+              </a>
+            </p>
+          </div>
+        </footer>
       </div>
     </BrowserRouter>
   );
