@@ -1,0 +1,116 @@
+.report {
+  max-width: 1000px;
+  margin: 3rem auto;
+  font-family: Inter, sans-serif;
+}
+
+.report h2 {
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+.report-card {
+  display: flex;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.1);
+  padding: 2rem;
+  gap: 2rem;
+}
+
+
+.left {
+  flex: 1.5;
+}
+
+.selected span {
+  display: inline-block;
+  background: #ff6b6b;
+  color: #fff;
+  padding: .4rem .7rem;
+  border-radius: 20px;
+  margin: .3rem;
+  cursor: pointer;
+  font-size: .85rem;
+}
+
+.label {
+  margin: 1rem 0 .5rem;
+  font-weight: 500;
+}
+
+.chips button {
+  margin: .3rem;
+  padding: .4rem .8rem;
+  border-radius: 20px;
+  border: none;
+  background: #ffecec;
+  color: #d64545;
+  cursor: pointer;
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+}
+
+select, input {
+  width: 100%;
+  padding: .6rem;
+  margin-top: .3rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.row {
+  display: flex;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  padding: .6rem 1rem;
+  border-radius: 20px;
+}
+
+.primary {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: .6rem 1.2rem;
+  border-radius: 20px;
+}
+
+.msg {
+  margin-top: 1rem;
+  font-size: .9rem;
+}
+
+.right {
+  flex: 1;
+  text-align: center;
+}
+
+.right img {
+  max-height: 250px;
+  opacity: .7;
+}
+
+.rotate {
+  font-size: .85rem;
+  color: #ff6b6b;
+  margin-top: .5rem;
+}
