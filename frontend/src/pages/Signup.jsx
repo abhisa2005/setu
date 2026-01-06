@@ -8,35 +8,44 @@ const API_BASE =
   "http://localhost:4000";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const nav = useNavigate();
+  const navigate = useNavigate(); // kept, unused on purpose
 
   const submit = async (e) => {
     e.preventDefault();
     setError("");
 
-    if ((!email && !username) || !password) {
-      setError("Username/Email and password are required");
+    if (!email || !password) {
+      setError("Email and password are required");
       return;
     }
 
     try {
       setLoading(true);
+
       const res = await axios.post(`${API_BASE}/api/auth/login`, {
-        email: email || undefined,
-        username: username || undefined,
-        password,
+        email,
+        password
       });
 
+      // store auth info
       localStorage.setItem("token", res.data.token);
-      nav("/admin");
+      localStorage.setItem("role", res.data.user.role);
+
+      // ✅ FORCE LEAVE LOGIN PAGE (THIS IS THE FIX)
+      if (res.data.user.role === "admin") {
+        window.location.replace("/admin");
+      } else {
+        window.location.replace("/dashboard");
+      }
     } catch (err) {
-      setError("Invalid credentials");
+      setError(
+        err.response?.data?.message || "Invalid email or password"
+      );
     } finally {
       setLoading(false);
     }
@@ -44,14 +53,13 @@ export default function Login() {
 
   return (
     <div className="auth-container">
-
       <div className="auth-left">
         <div className="left-content">
           <div className="logo">🏥</div>
 
           <p className="left-text">
             We at <strong>MediCare</strong> are always fully focused on helping
-            your child.
+            your health journey.
           </p>
 
           <img
@@ -62,24 +70,21 @@ export default function Login() {
         </div>
       </div>
 
-
       <div className="auth-right">
-        <h2 className="title">Create Account</h2>
+        <h2 className="title">Log In</h2>
 
         <div className="social-buttons">
-          <button className="social">Sign up with Google</button>
-          <button className="social">Sign up with Facebook</button>
+          <button className="social" disabled>
+            Continue with Google
+          </button>
+          <button className="social" disabled>
+            Continue with Facebook
+          </button>
         </div>
 
         <div className="divider">OR</div>
 
         <form className="form" onSubmit={submit}>
-          <input
-            placeholder="Username (optional)"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
           <input
             type="email"
             placeholder="Email"
@@ -101,14 +106,15 @@ export default function Login() {
             className="primary-btn"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Create Account"}
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
 
         <p className="login-text">
-          Already have an Account? <span>Log in</span>
+          Don’t have an account? <span>Sign up</span>
         </p>
       </div>
     </div>
   );
 }
+

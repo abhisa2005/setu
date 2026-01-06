@@ -38,6 +38,13 @@ export default function Report() {
 
   const submit = async e => {
     e.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setMessage("Please login before submitting a report");
+      return;
+    }
+
     try {
       await axios.post(
         `${import.meta.env.VITE_API_BASE || "http://localhost:4000"}/api/cases`,
@@ -50,10 +57,18 @@ export default function Report() {
             type: "Point",
             coordinates: [parseFloat(lon), parseFloat(lat)],
           },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
       );
+
       setMessage("Report submitted successfully");
     } catch (err) {
+      console.error("REPORT ERROR:", err.response?.data || err);
       setMessage("Error submitting report");
     }
   };
@@ -121,7 +136,6 @@ export default function Report() {
 
           {message && <p className="msg">{message}</p>}
         </div>
-
 
         <div className="right">
           <img src="/body.png" alt="body model" />

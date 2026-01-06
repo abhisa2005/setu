@@ -146,3 +146,25 @@
     border-radius: 2rem 2rem 0 0;
   }
 }
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* LEFT PANEL — decoration only */
+.auth-left {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* RIGHT PANEL — FORM MUST BE CLICKABLE */
+.auth-right {
+  flex: 1;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  background: #ffffff;
+}

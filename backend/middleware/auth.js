@@ -1,22 +1,49 @@
 ﻿const jwt = require("jsonwebtoken");
-const User = require("../models/User");
 
-const authMiddleware = async (req, res, next) => {
+/**
+ * Auth middleware (logged-in users)
+ */
+function authMiddleware(req, res, next) {
   const header = req.headers.authorization;
-  if (!header) return res.status(401).json({ message: "Missing auth header" });
-  const token = header.split(" ")[1];
+
+  if (!header) {
+    return res.status(401).json({ message: "No token provided" });
+  }
+
+  const parts = header.split(" ");
+  if (parts.length !== 2 || parts[0] !== "Bearer") {
+    return res.status(401).json({ message: "Invalid authorization format" });
+  }
+
+  const token = parts[1];
+
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(payload.id).select("-passwordHash");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.id;
+    req.userRole = decoded.role;
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid token" });
   }
-};
+}
 
-const adminOnly = (req, res, next) => {
-  if (!req.user || req.user.role !== "admin") return res.status(403).json({ message: "Admin only" });
+/**
+ * Admin-only middleware
+ */
+function adminOnly(req, res, next) {
+  if (req.userRole !== "admin") {
+    return res.status(403).json({ message: "Admin access required" });
+  }
   next();
-};
+}
 
-module.exports = { authMiddleware, adminOnly };
+/**
+ * DEFAULT export for cases.js compatibility
+ */
+module.exports = authMiddleware;
+
+/**
+ * Named exports for admin.js compatibility
+ */
+module.exports.authMiddleware = authMiddleware;
+module.exports.adminOnly = adminOnly;

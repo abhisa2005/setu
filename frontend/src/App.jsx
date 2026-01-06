@@ -2,14 +2,14 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Report from "./pages/Report";
-import Login from "./pages/Signup";
+import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import Dashboard from "./pages/Dashboard";
 import "./App.css";
 
 export default function App() {
   return (
     <div className="app-container">
-
       <header className="app-header">
         <h1 className="app-title">Disease Tracker</h1>
 
@@ -27,6 +27,7 @@ export default function App() {
           <Route path="/report" element={<Report />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
 
@@ -41,7 +42,6 @@ export default function App() {
           </p>
         </div>
       </footer>
-
     </div>
   );
 }
