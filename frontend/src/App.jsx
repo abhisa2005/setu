@@ -2,7 +2,7 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Report from "./pages/Report";
-import Login from "./pages/Login";
+import Login from "./pages/Signup";
 import Admin from "./pages/Admin";
 import "./App.css";
 
@@ -16,7 +16,7 @@ export default function App() {
         <nav className="app-nav">
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/report" className="nav-link">Report</Link>
-          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="/login" className="nav-link">Signup</Link>
           <Link to="/admin" className="nav-link">Admin</Link>
         </nav>
       </header>
@@ -34,7 +34,7 @@ export default function App() {
         <div className="footer-inner">
           <p>© 2026 Disease Tracking System</p>
           <p>
-            Created by <strong>Abhishek Sarkar</strong> ·{" "}
+            Created by <strong>Disease Tracker Team</strong> ·{" "}
             <a href="mailto:contact@healthtrack.com">
               contact@healthtrack.com
             </a>

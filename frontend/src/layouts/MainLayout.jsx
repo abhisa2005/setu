@@ -11,7 +11,7 @@ export default function MainLayout() {
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/report" className="nav-link">Report</Link>
           <Link to="/admin" className="nav-link">Admin</Link>
-          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="/login" className="nav-link">Signup</Link>
         </nav>
       </header>
 
