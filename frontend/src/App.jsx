@@ -5,6 +5,7 @@ import Report from "./pages/Report";
 import Signup from "./pages/Signup";
 import Admin from "./pages/Admin";
 import Dashboard from "./pages/Dashboard";
+import Chatbot from "./components/Chatbot";
 import "./App.css";
 
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/report" element={<Report />} />
-         <Route path="/login" element={<Signup />} />
+          <Route path="/login" element={<Signup />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
@@ -43,6 +44,9 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* Chatbot added without touching UI */}
+      <Chatbot />
     </div>
   );
 }
